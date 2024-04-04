@@ -1,0 +1,17 @@
+PyPDF2 
+openai==0.28.1
+
+
+streamlit
+langchain==0.0.316
+python-dotenv
+faiss-cpu
+huggingface_hub
+
+
+
+InstructorEmbedding
+sentence_transformers
+
+
+chromadb
