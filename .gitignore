@@ -1,0 +1,6 @@
+.env
+__pycache__/
+anki-venv/
+generator.py
+package-lock.json
+package.json
