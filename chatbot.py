@@ -51,3 +51,20 @@ def handle_userinput(user_question):
             st.write(user_template.replace("{{MSG}}", message.content), unsafe_allow_html=True)
         else:
             st.write(bot_template.replace("{{MSG}}", message.content), unsafe_allow_html=True)
+            
+
+def interface_chatbot():
+    if "conversation" not in st.session_state:
+        st.session_state.conversation = None
+
+    if "chat_history" not in st.session_state:
+        st.session_state.chat_history = None
+
+    st.header("Chat with multiple pdfs :books:")
+    user_question = st.text_input("Ask a question about your documents:", placeholder="Type your question here")
+
+    if user_question:
+        handle_userinput(user_question)
+
+    #st.write(user_template.replace("{{MSG}}", "hello robot"), unsafe_allow_html=True)
+    #st.write(bot_template.replace("{{MSG}}", "hello human"), unsafe_allow_html=True)
