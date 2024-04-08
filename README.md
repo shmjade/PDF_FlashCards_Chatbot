@@ -35,6 +35,6 @@ Configure virtual environment
 `pip install -r requirements.txt`
 
 
-#### Sources
+#### Inspired on
 - [@alejandro-ao : ask-multiple-pdfs](https://github.com/alejandro-ao/ask-multiple-pdfs)
 - [@PromtEngineer : Anki_Flash_Card_Generator](https://github.com/PromtEngineer/Anki_FlashCard_Generator/tree/main)
