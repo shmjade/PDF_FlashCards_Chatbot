@@ -38,13 +38,10 @@ def create_anki_cards(pdf_text):
             temperature=0.3,
             max_tokens=2048
         )
-        st.write("lalala: ", response)
         response_from_api = response["choices"][0]["message"]["content"].split("\n")
-        st.write("lololo: ", response_from_api)
         for line in response_from_api:
             question, answer = line.split(";")
             flashcard = {"question": question, "answer": answer}
-            st.write("question: ", flashcard["question"], "  answer: ", flashcard["answer"])
             st.session_state.generated_flashcards.append(flashcard)
 
         if i == 0:
@@ -54,7 +51,7 @@ def create_anki_cards(pdf_text):
 
 
 def display_flashcard(index, flashcards, show_question):
-    container = st.container(border=True)
+    container = st.container(border=True, height=800)
     card = flashcards[index]
     if show_question:
         card_text = card["question"]
@@ -67,16 +64,13 @@ def interface_flashcards(flashcards):
     if len(flashcards) == 0:
         st.write("No flashcards available.")
     else:
-
         current_index = st.session_state.get("current_index", 0)
-        show_question = st.session_state.get("show_question", True)
 
         # Display current flashcard
-        display_flashcard(current_index, flashcards, show_question)
+        display_flashcard(current_index, flashcards, st.session_state.show_question)
 
         # Button to toggle between question and answer
-        if st.button("Show Answer" if show_question else "Show Question"):
-            st.session_state.show_question = not show_question
+        st.session_state.show_question = not st.button("Show Answer")
 
         # Button to go to previous flashcard
         if current_index > 0:

@@ -60,7 +60,7 @@ def interface_chatbot():
     if "chat_history" not in st.session_state:
         st.session_state.chat_history = None
 
-    st.header("Chat with multiple pdfs :books:")
+    # st.header("Chat with multiple pdfs :books:")
     user_question = st.text_input("Ask a question about your documents:", placeholder="Type your question here")
 
     if user_question:

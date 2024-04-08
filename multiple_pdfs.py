@@ -10,15 +10,17 @@ def main():
 
     load_dotenv()
 
-    st.set_page_config(page_title="Chat with multiple pdfs", page_icon=":books:")
+    #st.set_page_config(page_title="Chat with multiple pdfs", page_icon=":books:")
     st.write(css, unsafe_allow_html=True)
 
     tab1, tab2 = st.tabs(["🤖 Chatbot", "🗃 Flashcards generator"])
-    tab1.subheader("🤖 Ask questions about your pdf")
+    tab1.subheader("🤖 Ask questions about your pdfs")
+    tab2.subheader("📚 Study the generated flashcards")
 
-    tab2.subheader("Flashcardssssssss")
     if "text_pdf" not in st.session_state:
         st.session_state.text_pdf = ""
+    if "show_question" not in st.session_state:
+        st.session_state.show_question = True
 
     with st.sidebar:
         st.subheader("Your documents")
@@ -32,8 +34,10 @@ def main():
         with tab1:
             interface_chatbot()
         with tab2:
-            flashcards = create_anki_cards(st.session_state.text_pdf)
-            interface_flashcards(flashcards)
+            #if "flashcards" not in st.session_state:
+            st.session_state.flashcards = create_anki_cards(st.session_state.text_pdf)
+            #st.write(st.session_state.flashcards)
+            interface_flashcards(st.session_state.flashcards)
 
 if __name__ == '__main__':
     main()
